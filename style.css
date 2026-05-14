@@ -1,0 +1,328 @@
+/* ලස්සන Modern UI Font එකක් Google වලින් ගෙන්වා ගැනීම */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+
+/* FM Malithi ෆොන්ට් එක (පෝස්ටරයේ අකුරු සඳහා) */
+@font-face {
+    font-family: 'MalithiCustom';
+    src: url('FM-Malithi-x.ttf') format('truetype');
+}
+
+/* FM Gangani ෆොන්ට් එක */
+@font-face {
+    font-family: 'GanganiCustom';
+    src: url('FM-Gangani.TTF') format('truetype');
+}
+
+/* FM Bindu ෆොන්ට් එක */
+@font-face {
+    font-family: 'BinduCustom';
+    src: url('FM-Bindu-x.TTF') format('truetype');
+}
+
+.gangani-font {
+    font-family: 'GanganiCustom', Arial, sans-serif !important;
+}
+
+.bindu-font {
+    font-family: 'BinduCustom', Arial, sans-serif !important;
+    font-size: 36px !important;
+    display: inline-block;
+    margin-top: 9px;
+}
+
+/* සම්පූර්ණ පිටුවේ පෙනුම - Deep Premium Dark Background */
+body {
+    font-family: 'Outfit', sans-serif;
+    padding: 30px 20px;
+    margin: 0;
+    background: radial-gradient(circle at top, #1a1e36 0%, #0f111a 60%, #050505 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+/* =========================================
+   Header & Title Styling (නම ලස්සන කිරීම)
+   ========================================= */
+.header-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.main-title {
+    font-size: 48px;
+    font-weight: 300;
+    /* FOC කොටස සිහින්ව පෙන්වයි */
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    color: #e2e8f0;
+}
+
+/* "Obituary" කොටස සඳහා Glowing Gradient පෙනුම */
+.gradient-text {
+    font-weight: 800;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 25px rgba(79, 172, 254, 0.5);
+    /* දිලිසෙන පෙනුම */
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #94a3b8;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   Layout (වම සහ දකුණ)
+   ========================================= */
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1300px;
+}
+
+/* =========================================
+   Premium Glassmorphism Form (වීදුරු පෝරමය)
+   ========================================= */
+.form-section {
+    background: rgba(20, 25, 40, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px 35px;
+    border-radius: 24px;
+    width: 380px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* උඩ දාරය දිලිසීමට */
+}
+
+.form-section label {
+    display: block;
+    margin-top: 18px;
+    font-weight: 400;
+    color: #94a3b8;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-section input,
+.form-section select {
+    width: 100%;
+    padding: 14px 16px;
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-section input:focus,
+.form-section select:focus {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-section select option {
+    background-color: #1a1e36;
+    color: #ffffff;
+}
+
+.live-hint {
+    font-family: 'MalithiCustom', Arial, sans-serif;
+    font-size: 18px;
+    color: #4facfe;
+    margin-top: 8px;
+    display: block;
+    min-height: 24px;
+}
+
+/* =========================================
+   දකුණු පස Preview කොටස
+   ========================================= */
+.preview-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#postBox {
+    width: 800px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+    background-color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bg-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 0;
+}
+
+#postText {
+    position: absolute;
+    top: 31%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'MalithiCustom', Arial, sans-serif;
+    font-size: 28px;
+    line-height: 1.5;
+    color: #000000;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =========================================
+   Modern Gradient Button
+   ========================================= */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button { 
+    padding: 16px 35px; 
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: #000000;
+    border: none; 
+    cursor: pointer; 
+    border-radius: 50px; 
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 20px rgba(79, 172, 254, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-family: 'Outfit', sans-serif;
+    min-width: 180px;
+}
+
+button:hover {
+    transform: translateY(-4px); 
+    box-shadow: 0 15px 30px rgba(79, 172, 254, 0.6);
+}
+
+button:active {
+    transform: translateY(1px); 
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #4facfe;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #4facfe;
+}
+
+/* =========================================
+   Premium Footer Styling
+   ========================================= */
+.app-footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* ඉතා සියුම් ඉරක් */
+    font-size: 14px;
+    color: #64748b;
+    /* අඳුරු අළු පැහැයක් */
+    letter-spacing: 1px;
+}
+
+.app-footer p {
+    margin: 0;
+}
+
+/* ඔයාගේ නම ලස්සනට දිලිසෙන විදියට පෙන්වීමට */
+.app-footer .dev-name {
+    color: #4facfe;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+    transition: all 0.3s ease;
+}
+
+.app-footer .dev-name:hover {
+    color: #00f2fe;
+    text-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
+    cursor: pointer;
+}
+
+/* =========================================
+   Mobile Optimization (Phone එකට ගැළපීම)
+   ========================================= */
+@media (max-width: 900px) {
+    body {
+        padding: 30px 15px;
+    }
+
+    .main-title {
+        font-size: 36px;
+        /* Phone එකේදී නම පොඩි වීම */
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .form-section {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    #postBox {
+        width: 100vw;
+        height: auto;
+        max-width: 800px;
+        max-height: none;
+        transform: scale(1);
+        margin-bottom: 20px;
+        border-radius: 0;
+        /* Phone එකේදී කෙළවරවල් හතරැස් වීම ලස්සනයි */
+    }
+
+    /* අකුරු වල ප්‍රමාණය Phone එකේදී කුඩා කිරීම */
+    #postText {
+        font-size: 2.5vw;
+    }
+
+    button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KCC Obituary</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="converter.js"></script>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1 class="main-title">KCC <span class="gradient-text">Obituary</span></h1>
+        <p class="subtitle">Memorial Post Generator</p>
+    </div>
+
+    <div class="container">
+        <div class="form-section">
+            <label>කණ්ඩායම :</label>
+            <select id="year" onchange="updateUI()">
+                <option value="2017 idudkH fm<">2017 සාමාන්්‍ය පෙළ</option>
+                <option value="2020 Wiia fm<" selected>2020 උසස් පෙළ</option>
+            </select>
+ 
+                
+            <label>නම:</label>
+                <input type="text" id="name" value="" oninput="updateUI()" placeholder="Singlish වලින්...">
+                <span id="nameHint" class="live-hint"></span>
+                
+            <label>සොයුරා / සොයුරිය:</label>
+            <select id="sibling" onchange="updateUI()">
+                <option value="fidhqrdf.a">සොයුරාගේ</option>
+                <option value="fidhqßhf.a" selected>සොයුරියගේ</option>
+            </select>
+
+            <label>කාගේ අභාවයද?:</label>
+            <select id="deceased" onchange="updateUI()">
+                <option value="mshdf.a" selected>පියාගේ</option>
+                <option value="ujf.a">මවගේ</option>
+                <option value="iShdf.a">සීයාගේ</option>
+                <option value="ñ;a;Kshf.a">මිත්තණියගේ</option>
+                <option value="wdpAÑf.a">ආච්චිගේ</option>
+                <option value="fidhqrdf.a">සොහොයුරාගේ</option>
+                <option value="fidhqßhf.a">සොහොයුරියගේ</option>
+                <option value="kef.Kshf.a">නැගණියගේ</option>
+                <option value="u,a,Sf.a">මල්ලීගේ</option>
+                <option value="ududf.a">මාමාගේ</option>
+                <option value="kekaodf.a">නැන්දාගේ</option>
+                <option value="ieñhdf.a">සැමියාගේ</option>
+                <option value="ìß|f.a">බිරිඳගේ</option>
+                <option value="mq;df.a">පුතාගේ</option>
+                <option value="ÈhKshf.a">දියණියගේ</option>
+                <option value="udukaKavshf.a">මාමණ්ඩියගේ</option>
+                <option value="kekaouaudf.a">නැන්දම්මාගේ</option>
+                <option value="{d;sfhl=f.a">ඥාතියෙකුගේ</option>
+            </select>
+        </div>
+
+        <div class="preview-section">
+            <div id="postBox">
+                <img src="background.jpg" class="bg-image" crossorigin="anonymous" alt="Background">
+                <div id="postText"></div>
+            </div>
+            <div class="button-group">
+                <button onclick="downloadImage()">Download Image</button>
+                <button onclick="copyCaption()" class="secondary-button">Copy Caption</button>
+            </div>
+        </div>
+    </div>
+    <footer class="app-footer">
+        <p>&copy; <span id="currentYear"></span> KCC Obituary. Created with ❤️ by <span class="dev-name">Vikum Deshan</span>.</p>
+    </footer>
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
+
+    <script>
+        let currentCaption = "";
+
+        function updateUI() {
+            let yearSelect = document.getElementById("year");
+            let yearValue = yearSelect.value;
+            let yearText = yearSelect.options[yearSelect.selectedIndex].text;
+
+            let rawName = document.getElementById("name").value;
+            let name = convertToFM(rawName) || "whf.a ku";
+            let unicodeName = convertSinglishToUnicode(rawName) || "";
+            
+            let nameHintElement = document.getElementById("nameHint");
+            if (nameHintElement) {
+                nameHintElement.innerText = name;
+            }
+            
+            let siblingSelect = document.getElementById("sibling");
+            let siblingValue = siblingSelect.value;
+            let siblingText = siblingSelect.options[siblingSelect.selectedIndex].text;
+
+            let deceasedSelect = document.getElementById("deceased");
+            let deceasedValue = deceasedSelect.value;
+            let deceasedText = deceasedSelect.options[deceasedSelect.selectedIndex].text;
+            
+            let finalText = `
+                <span class="gangani-font">${yearValue} lKavdhfï bf.kqu ,enQ</span><br>
+                <span class="bindu-font">${name} ${siblingValue}<br>
+                ${deceasedValue} wNdjh ms&lt;sn|j</span><br>
+            `;
+            
+            document.getElementById("postText").innerHTML = finalText;
+
+            // Generate Unicode Caption
+            currentCaption = `සී.ඩබ්.ඩබ්. කන්නන්ගර මධ්‍ය විද්‍යාලයේ ${yearText} කණ්ඩායමේ ඉගෙනුම ලැබූ ${unicodeName} ${siblingText} ${deceasedText} අභාවය පිළිබඳ අපගේ බලවත් ශෝකය ! 🏳️\n\n2017 සාමාන්‍ය පෙළ | 2020 උසස් පෙළ කණ්ඩායම\nසී.ඩබ්.ඩබ්. කන්නන්ගර මධ්‍ය විද්‍යාලය - මතුගම`;
+        }
+
+        function copyCaption() {
+            if (!currentCaption) return;
+            navigator.clipboard.writeText(currentCaption).then(() => {
+                alert("Caption copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function downloadImage() {
+            let postBox = document.getElementById("postBox");
+            
+            html2canvas(postBox, { 
+                scale: 4, 
+                useCORS: true,
+                logging: false 
+            }).then(canvas => {
+                let link = document.createElement('a');
+                link.download = 'Mathaka-Post.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        window.onload = function() {
+            updateUI();
+        };
+    </script>
+
+</body>
+</html>
